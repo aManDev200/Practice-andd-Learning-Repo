@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Interest</title>
+    </head>
+    <script>
+        let element;
+        async function Debouncing()
+        {
+            clearTimeout(element);
+            element = setTimeout({
+                GetInterest();
+            },1000)
+        }
+        async function GetInterest()
+        {
+            const principal = document.getElementById("principal").value;
+            const rate = document.getElementById("rate").value;
+            const time = document.getElementById("time").value;
+            const response = await fetch(`http://localhost:5000/?principal=${principal}&rate=${rate}&time=${time}`);
+            const ans = await response.text();
+            document.getElementById("GenerateDiv").innerHTML = ans;
+        }
+    </script>
+    <body>
+        <input id = "principal" oninput="GetInterest()" type = text></input><br><br>
+        <input id = "rate" type = text oninput="GetInterest()"></input><br><br>
+        <input id = "time" type = text oninput="GetInterest()"></input><br><br>
+        <div id = "GenerateDiv"></div>
+    </body>
+</html>

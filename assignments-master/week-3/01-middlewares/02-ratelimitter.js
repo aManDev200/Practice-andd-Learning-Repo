@@ -11,6 +11,11 @@ const app = express();
 // You have been given a numberOfRequestsForUser object to start off with which
 // clears every one second
 
+let requestcount = 0;
+const DDosProtection = (req,res,next)=>{
+  
+}
+
 let numberOfRequestsForUser = {};
 setInterval(() => {
     numberOfRequestsForUser = {};
